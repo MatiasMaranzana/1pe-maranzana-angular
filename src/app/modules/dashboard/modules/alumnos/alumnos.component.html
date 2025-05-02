@@ -1,0 +1,31 @@
+<h1>Alumnos</h1>
+
+<form [formGroup]="alumnosForm" (ngSubmit)="onSubmit()" class="w-50">
+    <div class="row">
+        <div class="col-4">
+            <mat-form-field class="w-100">
+                <mat-label>Nombre</mat-label>
+                <input formControlName="nombre" matInput class="w-100" />
+            </mat-form-field>
+        </div>
+        <div class="col-4">
+            <mat-form-field class="w-100">
+                <mat-label>Apellido</mat-label>
+                <input formControlName="apellido" matInput class="w-100" />
+            </mat-form-field>
+        </div>
+        <div class="col-4">
+            <mat-form-field class="w-100">
+                <mat-label>Carrera</mat-label>
+                <input formControlName="carrera" matInput class="w-100" />
+            </mat-form-field>
+        </div>
+        <div class="col-12 d-flex justify-content-end mt-3">
+            <button type="submit" mat-flat-button color="primary">
+                {{ isEditingPosition ? 'Guardar cambios' : 'Agregar alumno' }}
+            </button>
+        </div>
+    </div>
+</form>
+
+<app-alumnos-table (editAlumno)="onEditAlumno($event)" (deleteAlumno)="onDeleteAlumno($event)" [dataSource]="alumnos" />
